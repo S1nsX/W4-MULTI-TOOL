@@ -9,16 +9,13 @@ from rich.console import Console
 from rich import print, panel
 
 logo = """
-
 [bold red]██████╗ ██╗  ██╗    ███╗   ███╗██╗   ██╗██╗  ████████╗██╗    ████████╗ ██████╗  ██████╗ ██╗     
 ╚════██╗╚██╗██╔╝    ████╗ ████║██║   ██║██║  ╚══██╔══╝██║    ╚══██╔══╝██╔═══██╗██╔═══██╗██║     
  █████╔╝ ╚███╔╝     ██╔████╔██║██║   ██║██║     ██║   ██║       ██║   ██║   ██║██║   ██║██║     
 ██╔═══╝  ██╔██╗     ██║╚██╔╝██║██║   ██║██║     ██║   ██║       ██║   ██║   ██║██║   ██║██║     
 ███████╗██╔╝ ██╗    ██║ ╚═╝ ██║╚██████╔╝███████╗██║   ██║       ██║   ╚██████╔╝╚██████╔╝███████╗
 ╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝   ╚═╝       ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝
-                                                                                                
 """
-
 
 while True:
     os.system("2X MULTI TOOL")
@@ -33,17 +30,19 @@ while True:
         os.system("cls")
         print("IP LOOKUP\n")
         ip = input("Enter IP: ")
-        os.system("cls")
-        r = requests.get(f"http://ip-api.com/json/{ip}")
-        data = r.json()
-        print(f"[bold cyan]IP: {data['query']}")
-        print(f"[bold cyan]Country: {data['country']}")
-        print(f"[bold cyan]Region: {data['regionName']}")
-        print(f"[bold cyan]City: {data['city']}")
-        print(f"[bold cyan]Time Zone: {data['timezone']}")
-        print(f"[bold cyan]Zip Code: {data['zip']}")
-
-        print("")
+        if not ip:
+            print("[bold red]Error: No IP provided")
+        else:
+            os.system("cls")
+            r = requests.get(f"http://ip-api.com/json/{ip}")
+            data = r.json()
+            print(f"[bold cyan]IP: {data['query']}")
+            print(f"[bold cyan]Country: {data['country']}")
+            print(f"[bold cyan]Region: {data['regionName']}")
+            print(f"[bold cyan]City: {data['city']}")
+            print(f"[bold cyan]Time Zone: {data['timezone']}")
+            print(f"[bold cyan]Zip Code: {data['zip']}")
+            print("")
         pause = input("Press enter to continue...")
 
     if x == "2":
@@ -59,6 +58,6 @@ while True:
         pause = input("Press enter to continue...")
 
     if x == "3":
-        os.system("cls")
-        print("Shutting down...")
         break
+    else:
+        print("[bold red]Invalid choice, please try again.")
